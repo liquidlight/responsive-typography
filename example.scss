@@ -1,0 +1,95 @@
+// Include guardian sass-mq library
+@include "mq";
+
+// Include typography mixin
+@include "typography"
+
+// Set up the map
+$typography: (
+	mega: (
+		base: (
+			font-size: 210%,
+			font-weight: 300,
+			letter-spacing: -0.5px,
+			line-height: 1.1
+		),
+		tablet: (
+			font-size: 290%
+		),
+		desktop: (
+			font-size: 375%,
+		)
+	),
+	h1: (
+		base: (
+			font-size: 250%,
+			font-weight: 300,
+			line-height: 1.1,
+			letter-spacing: -0.5px,
+		),
+		desktop: (
+			font-size: 320%
+		)
+	),
+	h2: (
+		base: (
+			font-size: 175%,
+			letter-spacing: -1.5px
+		),
+		tablet: (
+			font-size: 187%
+		)
+	),
+	h3: (
+		base: (
+			font-size: 150%,
+			letter-spacing: -1px
+		),
+		tablet: (
+			font-size: 160%
+		)
+	),
+	h4: (
+		base: (
+			font-size: 140%,
+			letter-spacing: -1px
+		)
+	),
+	h5: (
+		base: (
+			font-size: 112.5%,
+			font-weight: bold,
+		)
+	),
+	h6: (
+		base: (
+			font-size: 112.5%,
+		)
+	),
+	p: (
+		base: (
+			line-height: 1.4em,
+			font-size: 106%
+		),
+		tablet: (
+			font-size: 112.5%
+		)
+	)
+);
+
+// use the mixin
+h1 {
+  @include typography(h1);
+}
+h2 {
+  @include typography(h2);
+}
+h3 {
+  @include typography(h3);
+}
+h4 {
+  @include typography(h4);
+}
+.heading {
+  @include typography(mega);
+}
