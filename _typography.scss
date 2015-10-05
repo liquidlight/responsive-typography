@@ -1,0 +1,68 @@
+/// Output each key/value in a map as css declarations
+/// @param {map} $map - The map you wish to output
+@mixin propValue($map) {
+	@each $prop, $value in $map {
+		#{$prop}: #{$value};
+	}
+}
+
+/// The typography scale for responsive typographic set up
+/// @param {string} $element - The keyword you wish generate the typographic scale for
+/// @example css - Usage
+/// $mq-breakpoints: (
+/// 		micro: 30em,
+/// 		tablet: 45em,
+/// 		laptop: 50em,
+/// 		desktop: 65em,
+/// 		jumbo: 112em
+/// );
+///
+/// $typography: (
+/// 	h1: (
+/// 		base: (
+/// 			font-size: 1.3em,
+/// 			line-height: 1.1
+/// 		),
+/// 		tablet: (
+/// 			font-size: 1.8em
+/// 		),
+/// 		laptop: (
+/// 			margin-bottom: 2em
+/// 		)
+/// 	)
+/// );
+///
+/// h1 {
+/// 	@include typography(h1);
+/// }
+///
+/// @example css - Output
+/// h1 {
+/// 	font-size: 1.3em;
+/// 	line-height: 1.1;
+/// }
+///  @media all and (min-width: 45em) {
+/// 	h1 {
+/// 		font-size: 1.8em;
+/// 	}
+/// }
+///  @media all and (min-width: 50em) {
+/// 	h1 {
+/// 		margin-bottom: 2em;
+/// 	}
+/// }
+@mixin typography($element) {
+	$map: map-get($typography, $element);
+
+	$base: map-get($map, base);
+
+	@include propValue($base);
+
+	$mq: map-remove($map, base);
+
+	@each $bp, $attr in $mq {
+		@include mq($bp) {
+			@include propValue($attr);
+		}
+	}
+}
