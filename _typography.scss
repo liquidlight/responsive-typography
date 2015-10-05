@@ -1,5 +1,46 @@
+////
+/// @author Mike Street
+/// @group Typography
+////
+
+/// Set default `$typography` map
+/// @group typography
+/// @type Map
+$typography: (
+	h1: (
+		base: (
+			font-size: 200%
+		)
+	),
+	h2: (
+		base: (
+			font-size: 150%
+		)
+	),
+	h3: (
+		base: (
+			font-size: 130%
+		)
+	),
+	h4: (
+		base: (
+			font-size: 110%
+		)
+	),
+	h5: (
+		base: (
+			font-size: 100%
+		)
+	),
+	h6: (
+		base: (
+			font-size: 100%
+		)
+	)
+) !default;
+
 /// Output each key/value in a map as css declarations
-/// @param {map} $map - The map you wish to output
+/// @param {map} $map - The map you wish to ouput
 @mixin propValue($map) {
 	@each $prop, $value in $map {
 		#{$prop}: #{$value};
@@ -8,7 +49,7 @@
 
 /// The typography scale for responsive typographic set up
 /// @param {string} $element - The keyword you wish generate the typographic scale for
-/// @example css - Usage
+/// @example scss - Usage
 /// $mq-breakpoints: (
 /// 		micro: 30em,
 /// 		tablet: 45em,
@@ -53,7 +94,7 @@
 /// }
 @mixin typography($element) {
 	$map: map-get($typography, $element);
-
+	
 	$base: map-get($map, base);
 
 	@include propValue($base);
